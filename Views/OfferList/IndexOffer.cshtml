@@ -1,0 +1,66 @@
+﻿@model IEnumerable<OfferList>
+
+@{
+    ViewData["Title"] = "IndexOffer";
+}
+
+<style>
+    .table th, .table td {
+        white-space: nowrap; /* หลีกเลี่ยงการตัดบรรทัดในข้อความ */
+    }
+
+    .table td {
+        word-wrap: break-word; /* ทำให้ข้อความยาวๆ สามารถแยกบรรทัดได้ */
+    }
+</style>
+
+
+    <div class="form-control mt-5">
+        <div class="d-flex align-items-center">
+            <div class="card-body">
+                <h3>บันทึกข้อมูลประเภทงาน</h3>
+            </div>
+            <div class="">
+                <a class="btn btn-primary" asp-action="CreateOffer">เพิ่มข้อมูล</a>
+            </div>
+        </div>
+        <table class="table table-bordered mt-2 p-2">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th scope="col">เลขที่ใบงาน</th>
+                    <th scope="col">วันที่</th>
+                    <th scope="col">ประเภทงาน</th>
+                    <th scope="col">รายละเอียด</th>
+                    <th scope="col">สถานะงาน</th>
+                    <th scope="col">หมายเหตุ</th>
+                    <th scope="col">ผู้บันทึก</th>
+                    <th scope="col">แก้ไข</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th class="text-center" scope="row">@item.Number</th>
+                    <td class="text-center">@item.DateOnly</td>
+                        <td class="text-center">@item.CheckList</td>
+                        <td>@item.Description</td>
+                        <td>@item.Status</td>
+                        <td>@item.Finish</td>
+                        <td class="text-center">@item.Recorder</td>
+                        <td class="text-center">
+                            <a asp-action="Edit"
+                               asp-controller="OfferList"
+                               asp-route-id="@item.Id"
+                               class="btn btn-warning">แก้ไข</a>
+                            <a asp-action="Delete"
+                           asp-controller="OfferList"
+                               asp-route-id="@item.Id"
+                               class="btn btn-danger"
+                               onclick="return confirm('คุณต้องการลบ ใข่หรือไม่ ?')">ลบ</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,42 @@
+﻿@model Emergency
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>แก้ไขข้อมูลการรับแจ้งเหตุ</h2>
+
+<div class="container-sm mt-4 d-flex justify-content-between align-items-center p-4">
+    <div class="col-4">
+        <form asp-action="Edit" method="post">
+            <div class="row">
+                <div class="mb-2 col-5">
+                    <label asp-for="Date" class="form-label">Date</label>
+                    <input asp-for="Date" type="date" class="form-control" placeholder="ข้อมูลวันที่">
+                    <span asp-validation-for="Date"></span>
+                </div>
+                <div class="mb-2 col-5">
+                    <label asp-for="Time" class="form-label">Time</label>
+                    <input asp-for="Time" type="time" class="form-control" placeholder="ข้อมูลเวลา">
+                    <span asp-validation-for="Time" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label asp-for="Description" class="form-label">รายละเอียด</label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="Edit" class="form-label">การแก้ไข</label>
+                <textarea asp-for="Edit" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Edit" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="Recorder" class="form-label">ผู้บันทึก</label>
+                <input asp-for="Recorder" type="text" class="form-control" placeholder="ข้อมูลผู้บันทึก">
+                <span asp-validation-for="Recorder" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary" type="submit">บันทึก</button>
+        </form>
+    </div>
+    <img class="p-3" src="/โลโก้ทีมฉุกเฉิน.jpg" width="450" />
+</div>
